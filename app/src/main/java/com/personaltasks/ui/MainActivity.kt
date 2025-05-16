@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.personaltasks.R
 import com.personaltasks.adapter.TaskAdapter
+import com.personaltasks.controller.MainController
 import com.personaltasks.databinding.ActivityMainBinding
 import com.personaltasks.model.Constant.EXTRA_TASK
 import com.personaltasks.model.Task
