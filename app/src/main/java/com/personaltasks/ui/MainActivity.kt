@@ -93,6 +93,10 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun onTaskClick(position: Int) {
         Intent(this, TaskActivity::class.java).apply {
             putExtra(EXTRA_TASK, taskList[position])
