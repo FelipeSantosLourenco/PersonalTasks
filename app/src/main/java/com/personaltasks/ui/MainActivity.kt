@@ -3,6 +3,7 @@ package com.personaltasks.ui
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
@@ -73,6 +74,11 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         amb.taskRv.layoutManager = LinearLayoutManager(this)
 
         fillTaskList()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 
     override fun onTaskClick(position: Int) {
