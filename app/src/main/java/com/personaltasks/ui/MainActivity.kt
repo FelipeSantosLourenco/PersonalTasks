@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         TaskAdapter(taskList, this)
     }
 
-    private lateinit var carl:ActivityResultLauncher<Intent>
+    private lateinit var tarl:ActivityResultLauncher<Intent>
 
     private val mainController: MainController by lazy {
         MainController(this)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         setSupportActionBar(amb.toolbarIn.toolbar)
         supportActionBar?.subtitle = "Personal tasks"
 
-        carl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        tarl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val task = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     result.data?.getParcelableExtra(EXTRA_TASK, Task::class.java)
@@ -91,7 +91,10 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     }
 
     override fun onEditTaskMenuItemClick(position: Int) {
-        TODO("Not yet implemented")
+        Intent(this, TaskActivity::class.java).apply {
+            putExtra(EXTRA_TASK, taskList[position])
+            tarl.launch(this)
+        }
     }
 
     private fun fillTaskList() {
