@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/add_task_mi"
-        android:title="Nova task"
+        android:title="@string/nova_task"
         app:showAsAction="always"
         />
 

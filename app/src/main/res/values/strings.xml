@@ -7,4 +7,5 @@
     <string name="data_limite">Data limite</string>
     <string name="remover_task">Remover task</string>
     <string name="editar_task">Editar task</string>
+    <string name="nova_task">Nova task</string>
 </resources>
