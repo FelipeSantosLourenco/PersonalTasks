@@ -16,6 +16,7 @@ import com.personaltasks.adapter.TaskAdapter
 import com.personaltasks.controller.MainController
 import com.personaltasks.databinding.ActivityMainBinding
 import com.personaltasks.model.Constant.EXTRA_TASK
+import com.personaltasks.model.Constant.EXTRA_VIEW_TASK
 import com.personaltasks.model.Task
 
 class MainActivity : AppCompatActivity(), OnTaskClickListener {
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                     else{
                         taskList[position] = receivedTask
                         taskAdapter.notifyItemChanged(position)
-                        mainController.modifyTask(receivedTask)
+                        mainController.updateTask(receivedTask)
                     }
                 }
             }
@@ -74,7 +75,11 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
     }
 
     override fun onTaskClick(position: Int) {
-        TODO("Not yet implemented")
+        Intent(this, TaskActivity::class.java).apply {
+            putExtra(EXTRA_TASK, taskList[position])
+            putExtra(EXTRA_VIEW_TASK, true)
+            startActivity(this)
+        }
     }
 
     override fun onRemoveTaskMenuItemClick(position: Int) {
