@@ -9,7 +9,7 @@ import java.time.LocalDate
 
 @Parcelize
 @Entity
-data class Task (
+data class Task(
     @PrimaryKey(autoGenerate = true) var id: Int? = INVALID_TASK_ID,
     var title: String = "",
     var description: String = "",
