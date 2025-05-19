@@ -70,5 +70,12 @@ class TaskActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        with(atb) {
+            cancelarBt.setOnClickListener{
+                setResult(RESULT_CANCELED)
+                finish()
+            }
+        }
     }
 }
