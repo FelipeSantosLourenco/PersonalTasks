@@ -119,8 +119,14 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         taskList.clear()
 
         Thread {
-            taskList.addAll(mainController.getTasks())
-            taskAdapter.notifyDataSetChanged()
+            val tasks = mainController.getTasks()
+            taskList.addAll(tasks)
+
+            // para rodar na thread principal
+            runOnUiThread {
+                taskAdapter.notifyDataSetChanged()
+            }
         }.start()
     }
+
 }
