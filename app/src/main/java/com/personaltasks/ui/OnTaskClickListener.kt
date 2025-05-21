@@ -5,4 +5,5 @@ sealed interface OnTaskClickListener {
 
     fun onRemoveTaskMenuItemClick(position: Int)
     fun onEditTaskMenuItemClick(position: Int)
+    fun onViewTaskMenuItemClick(position: Int)
 }

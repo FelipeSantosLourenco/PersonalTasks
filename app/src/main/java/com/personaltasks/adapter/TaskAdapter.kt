@@ -33,6 +33,11 @@ class TaskAdapter(
                     onTaskClickListener.onRemoveTaskMenuItemClick(adapterPosition)
                     true
                 }
+
+                menu.findItem(R.id.view_task_mi).setOnMenuItemClickListener {
+                    onTaskClickListener.onViewTaskMenuItemClick(adapterPosition)
+                    true
+                }
             }
 
             // seta listener de clique curto na célula de um novo holder

@@ -101,6 +101,14 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         }
     }
 
+    override fun onViewTaskMenuItemClick(position: Int) {
+        Intent(this, TaskActivity::class.java).apply {
+            putExtra(EXTRA_TASK, taskList[position])
+            putExtra(EXTRA_VIEW_TASK, true)
+            startActivity(this)
+        }
+    }
+
     override fun onRemoveTaskMenuItemClick(position: Int) {
         mainController.removeTask(taskList[position])
         taskList.removeAt(position)
