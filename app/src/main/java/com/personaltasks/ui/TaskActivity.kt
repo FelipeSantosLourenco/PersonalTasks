@@ -40,6 +40,8 @@ class TaskActivity : AppCompatActivity() {
                 // datePicker usa index de 0 a 11, então precisa tirar 1
                 dataLimiteEt.updateDate(it.date.year, it.date.monthValue - 1, it.date.dayOfMonth)
 
+                concluidaCb.isChecked = it.done
+
                 // verifica se é somente vizualização
                 val viewTask = intent.getBooleanExtra(EXTRA_VIEW_TASK, false)
                 if (viewTask) {
@@ -47,6 +49,7 @@ class TaskActivity : AppCompatActivity() {
                     tituloEt.isEnabled = false
                     descricaoEt.isEnabled = false
                     dataLimiteEt.isEnabled = false
+                    concluidaCb.isEnabled = false
                     salvarBt.visibility = View.GONE
                 }
             }
@@ -60,7 +63,8 @@ class TaskActivity : AppCompatActivity() {
                     tituloEt.text.toString().trim(),
                     descricaoEt.text.toString().trim(),
                     // datePicker usa index de 0 a 11 para mês
-                    LocalDate.of(dataLimiteEt.year, dataLimiteEt.month + 1, dataLimiteEt.dayOfMonth)
+                    LocalDate.of(dataLimiteEt.year, dataLimiteEt.month + 1, dataLimiteEt.dayOfMonth),
+                    concluidaCb.isChecked
                 ).let { task ->
                     Intent().apply {
                         putExtra(EXTRA_TASK, task)

@@ -22,4 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/data_limite" />
+
+    <TextView
+        android:id="@+id/concluida_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Concluída: " />
 </LinearLayout>

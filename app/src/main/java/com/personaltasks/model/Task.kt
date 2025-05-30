@@ -13,5 +13,6 @@ data class Task(
     @PrimaryKey(autoGenerate = true) var id: Int? = INVALID_TASK_ID,
     var title: String = "",
     var description: String = "",
-    var date: LocalDate = LocalDate.now()
+    var date: LocalDate = LocalDate.now(),
+    var done: Boolean
 ) : Parcelable

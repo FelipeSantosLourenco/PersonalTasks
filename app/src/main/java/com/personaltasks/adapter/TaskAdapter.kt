@@ -18,6 +18,7 @@ class TaskAdapter(
         val titleTv: TextView = ttb.tituloTv
         val descriptionTv: TextView = ttb.descricaoTv
         val dateTv: TextView = ttb.dataLimiteTv
+        val done: TextView = ttb.concluidaTv
 
         init {
             // cria o menu de contexto para cada célula associada a um novo holder
@@ -62,6 +63,7 @@ class TaskAdapter(
                 titleTv.text = task.title
                 descriptionTv.text = task.description
                 dateTv.text = task.date.toString()
+                done.text = task.done.toString()
             }
         }
     }
