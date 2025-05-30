@@ -18,6 +18,7 @@ import com.personaltasks.model.Constant.EXTRA_TASK
 import com.personaltasks.model.Constant.EXTRA_VIEW_TASK
 import com.personaltasks.model.Task
 
+
 class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
     private val amb: ActivityMainBinding by lazy{
