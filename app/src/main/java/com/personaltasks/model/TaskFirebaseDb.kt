@@ -71,6 +71,11 @@ class TaskFirebaseDb: TaskDao {
     }
 
     override fun updateTask(task: Task): Int {
+        databaseReference.child(task.id.toString()).setValue(task)
+        return 1
+    }
+
+    override fun deleteTask(task: Task): Int {
         databaseReference.child(task.id.toString()).removeValue()
         return 1
     }
