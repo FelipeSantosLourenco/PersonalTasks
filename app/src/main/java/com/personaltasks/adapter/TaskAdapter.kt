@@ -63,7 +63,12 @@ class TaskAdapter(
                 titleTv.text = task.title
                 descriptionTv.text = task.description
                 dateTv.text = task.date.toString()
-                done.text = task.done.toString()
+
+                if (task.done) {
+                    done.text = "Done: yes"
+                } else {
+                    done.text = "Done: no"
+                }
             }
         }
     }

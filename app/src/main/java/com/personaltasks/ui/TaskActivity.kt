@@ -10,6 +10,7 @@ import com.personaltasks.model.Constant.EXTRA_TASK
 import com.personaltasks.model.Constant.EXTRA_VIEW_TASK
 import com.personaltasks.model.Task
 import java.time.LocalDate
+import java.util.Calendar
 
 class TaskActivity : AppCompatActivity() {
 
@@ -36,11 +37,16 @@ class TaskActivity : AppCompatActivity() {
             with(atb) {
                 tituloEt.setText(it.title)
                 descricaoEt.setText(it.description)
-
-                // datePicker usa index de 0 a 11, então precisa tirar 1
-                dataLimiteEt.updateDate(it.date.year, it.date.monthValue - 1, it.date.dayOfMonth)
-
                 concluidaCb.isChecked = it.done
+
+                val cal = Calendar.getInstance().apply {
+                    timeInMillis = it.date
+                }
+                dataLimiteEt.updateDate(
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)
+                )
 
                 // verifica se é somente vizualização
                 val viewTask = intent.getBooleanExtra(EXTRA_VIEW_TASK, false)
@@ -57,13 +63,19 @@ class TaskActivity : AppCompatActivity() {
 
         with(atb) {
             salvarBt.setOnClickListener{
+                val year: Int = dataLimiteEt.year
+                val month: Int = dataLimiteEt.month
+                val day: Int = dataLimiteEt.dayOfMonth
+                val calendar = Calendar.getInstance()
+                calendar.set(year, month, day)
+                val dateMillis = calendar.timeInMillis
+
                 Task(
                     // se recebeu a task, matém o ID, senão gera um novo
                     receivedTask?.id?:hashCode(),
                     tituloEt.text.toString().trim(),
                     descricaoEt.text.toString().trim(),
-                    // datePicker usa index de 0 a 11 para mês
-                    LocalDate.of(dataLimiteEt.year, dataLimiteEt.month + 1, dataLimiteEt.dayOfMonth),
+                    date = dateMillis,
                     concluidaCb.isChecked
                 ).let { task ->
                     Intent().apply {
