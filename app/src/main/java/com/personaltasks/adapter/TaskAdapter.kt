@@ -9,6 +9,9 @@ import com.personaltasks.R
 import com.personaltasks.databinding.TileTaskBinding
 import com.personaltasks.model.Task
 import com.personaltasks.ui.OnTaskClickListener
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class TaskAdapter(
     private val taskList: MutableList<Task>,
@@ -60,9 +63,10 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         taskList[position].let{ task ->
             with(holder) {
+                val fmt = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 titleTv.text = task.title
                 descriptionTv.text = task.description
-                dateTv.text = task.date.toString()
+                dateTv.text = fmt.format(Date(task.date))
 
                 if (task.done) {
                     done.text = "Concluída"
