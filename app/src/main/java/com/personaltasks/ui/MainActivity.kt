@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
                     else{
                         taskList[position] = receivedTask
                         taskAdapter.notifyItemChanged(position)
-                        mainController.updateTask(receivedTask)
+                        mainController.modifyTask(receivedTask)
                     }
                 }
             }
@@ -105,7 +105,9 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         amb.taskRv.adapter = taskAdapter
         amb.taskRv.layoutManager = LinearLayoutManager(this)
 
-        fillTaskList()
+        getTasksHandler.sendMessageDelayed(
+            Message().apply { what = GET_TASKS_MESSAGE }, GET_TASKS_INTERVAL
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -122,10 +124,6 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
             else -> {false}
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onTaskClick(position: Int) {
@@ -157,19 +155,4 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
             tarl.launch(this)
         }
     }
-
-    private fun fillTaskList() {
-        taskList.clear()
-
-        Thread {
-            val tasks = mainController.getTasks()
-            taskList.addAll(tasks)
-
-            // para rodar na thread principal
-            runOnUiThread {
-                taskAdapter.notifyDataSetChanged()
-            }
-        }.start()
-    }
-
 }
