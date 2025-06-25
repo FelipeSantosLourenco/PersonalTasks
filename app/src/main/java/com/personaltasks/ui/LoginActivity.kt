@@ -52,7 +52,11 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
+    override fun onStart() {
+        super.onStart()
+        if (Firebase.auth.currentUser != null) openMainActivity()
     }
 
     private fun openMainActivity() {
