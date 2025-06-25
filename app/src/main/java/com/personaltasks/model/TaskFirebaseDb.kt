@@ -64,4 +64,5 @@ class TaskFirebaseDb: TaskDao {
         return 1L
     }
 
+    override fun retrieveTask(id: Int) = tasks[tasks.indexOfFirst { it.id == id }]
 }
