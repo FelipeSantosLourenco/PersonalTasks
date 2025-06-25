@@ -1,34 +1,35 @@
 package com.personaltasks.controller
 
+import android.os.Message
 import androidx.room.Room
+import com.personaltasks.model.Constant.EXTRA_TASK_ARRAY
 import com.personaltasks.model.Task
 import com.personaltasks.model.TaskDao
+import com.personaltasks.model.TaskFirebaseDb
 import com.personaltasks.model.TaskRoomDb
 import com.personaltasks.ui.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MainController(mainActivity: MainActivity) {
-    private val taskDao: TaskDao = Room.databaseBuilder(
-        mainActivity, TaskRoomDb::class.java, "task-database"
-    ).build().taskDao()
+class MainController(private val mainActivity: MainActivity) {
+    private val taskDao: TaskDao = TaskFirebaseDb()
+    private val databaseCoroutineScope = CoroutineScope(Dispatchers.IO)
 
-    fun insertTask(task: Task){
-        Thread {
+    fun insertTask(task: Task) {
+        databaseCoroutineScope.launch {
             taskDao.createTask(task)
-        }.start()
-    }
-
-    fun updateTask(task: Task) {
-        Thread {
-            taskDao.updateTask(task)
-        }.start()
-    }
-
-    fun removeTask(task: Task) {
-        Thread {
-            taskDao.deleteTask(task)
-        }.start()
+        }
     }
 
     fun getTask(id: Int) = taskDao.retrieveTask(id)
-    fun getTasks() = taskDao.retrieveTasks()
+
+    fun getTasks() {
+        databaseCoroutineScope.launch {
+            val taskList = taskDao.retrieveTasks()
+            mainActivity.getTasksHandler.sendMessage(Message().apply {
+                data.putParcelableArray(EXTRA_TASK_ARRAY, taskList.toTypedArray())
+            })
+        }
+    }
 }
