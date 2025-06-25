@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PersonalTasks"
         tools:targetApi="31">
         <activity
+            android:name=".ui.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.RegisterActivity"
             android:exported="false" />
         <activity
@@ -24,12 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.TaskActivity" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>
