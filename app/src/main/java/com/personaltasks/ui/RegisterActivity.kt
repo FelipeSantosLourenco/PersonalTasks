@@ -20,7 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         setSupportActionBar(arb.toolbarIn.toolbar)
         supportActionBar?.subtitle = getString(R.string.cadastrar)
 
-        
+
 
     }
 }

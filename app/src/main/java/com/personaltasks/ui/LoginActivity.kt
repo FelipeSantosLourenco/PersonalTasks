@@ -1,5 +1,6 @@
 package com.personaltasks.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.personaltasks.databinding.ActivityLoginBinding
@@ -19,6 +20,10 @@ class LoginActivity : AppCompatActivity() {
 
         setSupportActionBar(alb.toolbarIn.toolbar)
         supportActionBar?.title = "Login"
+
+        alb.signUpBt.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
 
     }
 }
