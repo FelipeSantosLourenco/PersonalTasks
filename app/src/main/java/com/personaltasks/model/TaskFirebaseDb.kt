@@ -28,6 +28,11 @@ class TaskFirebaseDb: TaskDao {
                 }
             }
 
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                val task = snapshot.getValue<Task>()
+                task?.let { tasks.remove(it) }
+            }
+
         }
 
         )
