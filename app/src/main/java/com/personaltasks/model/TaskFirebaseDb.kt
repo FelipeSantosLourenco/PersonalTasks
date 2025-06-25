@@ -3,6 +3,7 @@ package com.personaltasks.model
 import com.google.firebase.Firebase
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 
@@ -31,6 +32,14 @@ class TaskFirebaseDb: TaskDao {
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 val task = snapshot.getValue<Task>()
                 task?.let { tasks.remove(it) }
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                // NSA
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // NSA
             }
 
         }
