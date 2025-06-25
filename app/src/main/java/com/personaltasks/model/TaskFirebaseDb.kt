@@ -70,4 +70,8 @@ class TaskFirebaseDb: TaskDao {
         return tasks
     }
 
+    override fun updateTask(task: Task): Int {
+        databaseReference.child(task.id.toString()).removeValue()
+        return 1
+    }
 }
