@@ -65,4 +65,9 @@ class TaskFirebaseDb: TaskDao {
     }
 
     override fun retrieveTask(id: Int) = tasks[tasks.indexOfFirst { it.id == id }]
+
+    override fun retrieveTasks(): MutableList<Task> {
+        return tasks
+    }
+
 }
