@@ -7,4 +7,10 @@
         app:showAsAction="always"
         />
 
+    <item
+        android:id="@+id/sign_out_mi"
+        android:title="@string/sair"
+        app:showAsAction="never"
+        />
+
 </menu>

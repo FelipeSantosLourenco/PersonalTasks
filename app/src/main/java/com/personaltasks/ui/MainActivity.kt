@@ -13,6 +13,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import com.personaltasks.R
 import com.personaltasks.adapter.TaskAdapter
 import com.personaltasks.controller.MainController
@@ -119,6 +121,12 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
         return when(item.itemId) {
             R.id.add_task_mi -> {
                 tarl.launch(Intent(this, TaskActivity::class.java))
+                true
+            }
+
+            R.id.sign_out_mi -> {
+                Firebase.auth.signOut()
+                finish()
                 true
             }
 
