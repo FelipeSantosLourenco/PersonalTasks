@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                     arb.passwordRegisterEt.text.toString()
                 ).addOnFailureListener {
                     Toast.makeText(
-                        this@Regis.terActivity,
+                        this@RegisterActivity,
                         "Cadastro falhou. Causa: ${it.message}",
                         Toast.LENGTH_SHORT
                     ).show()
