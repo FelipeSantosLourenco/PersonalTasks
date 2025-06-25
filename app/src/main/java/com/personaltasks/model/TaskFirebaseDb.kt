@@ -15,11 +15,22 @@ class TaskFirebaseDb: TaskDao {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val task = snapshot.getValue<Task>()
                 task?.let { newTask ->
-                    if (!tasks.any() { it.id == newTask.id})
+                    if (!tasks.any() { it.id == newTask.id }) {
                         tasks.add(newTask)
+                    }
                 }
             }
-        })
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                val task = snapshot.getValue<Task>()
+                task?.let { editedTask ->
+                    tasks[tasks.indexOfFirst { it.id == editedTask.id }] = editedTask
+                }
+            }
+
+        }
+
+        )
     }
 
 }
