@@ -57,7 +57,11 @@ class TaskFirebaseDb: TaskDao {
                 // NSA
             }
         })
+    }
 
+    override fun createTask(task: Task): Long {
+        databaseReference.child(task.id.toString()).setValue(task)
+        return 1L
     }
 
 }
