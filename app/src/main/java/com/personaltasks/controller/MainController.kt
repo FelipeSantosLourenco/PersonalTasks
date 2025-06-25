@@ -38,4 +38,10 @@ class MainController(private val mainActivity: MainActivity) {
             taskDao.updateTask(task)
         }
     }
+
+    fun removeTask(task: Task) {
+        databaseCoroutineScope.launch {
+            taskDao.deleteTask(task)
+        }
+    }
 }
