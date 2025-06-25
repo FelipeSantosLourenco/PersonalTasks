@@ -9,4 +9,9 @@
     <string name="editar_task">Editar task</string>
     <string name="nova_task">Nova task</string>
     <string name="detalhes">Detalhes</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="resetar_senha">Resetar senha</string>
 </resources>

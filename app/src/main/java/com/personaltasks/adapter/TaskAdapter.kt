@@ -65,9 +65,9 @@ class TaskAdapter(
                 dateTv.text = task.date.toString()
 
                 if (task.done) {
-                    done.text = "Done: yes"
+                    done.text = "Concluída"
                 } else {
-                    done.text = "Done: no"
+                    done.text = "Pendente"
                 }
             }
         }
