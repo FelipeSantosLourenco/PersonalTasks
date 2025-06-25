@@ -32,4 +32,10 @@ class MainController(private val mainActivity: MainActivity) {
             })
         }
     }
+
+    fun modifyTask(task: Task) {
+        databaseCoroutineScope.launch {
+            taskDao.updateTask(task)
+        }
+    }
 }
