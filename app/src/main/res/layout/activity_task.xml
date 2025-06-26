@@ -66,8 +66,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/salvar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cancelar_bt"
+        app:layout_constraintStart_toEndOf="@id/cancelar_bt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/concluida_cb" />
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/cancelar"
-        app:layout_constraintStart_toEndOf="@id/salvar_bt"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/salvar_bt"
         app:layout_constraintTop_toBottomOf="@+id/concluida_cb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
