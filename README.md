@@ -4,7 +4,8 @@ PersonalTasks é um aplicativo Android para gerenciamento de tarefas, desenvolvi
 
 ## Vídeo
 Link para o vídeo de demonstração do aplicativo sendo executado:
-[Clique aqui](https://youtu.be/otX0wWEeAFY)
+[Primeira versão (sem histórico)](https://youtu.be/otX0wWEeAFY)
+[Segunda versão (com histórico e login)](https://youtu.be/D9ehcWv_Q2M)
 
 ## Funcionalidades
 
