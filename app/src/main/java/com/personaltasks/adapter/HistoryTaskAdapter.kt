@@ -70,6 +70,4 @@ class HistoryTaskAdapter(
     }
 
     override fun getItemCount(): Int = taskList.size
-
-
 }

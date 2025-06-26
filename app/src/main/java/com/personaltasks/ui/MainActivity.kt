@@ -24,7 +24,6 @@ import com.personaltasks.model.Constant.EXTRA_TASK_ARRAY
 import com.personaltasks.model.Constant.EXTRA_VIEW_TASK
 import com.personaltasks.model.Task
 
-
 class MainActivity : AppCompatActivity(), OnTaskClickListener {
 
     private val amb: ActivityMainBinding by lazy{
@@ -127,6 +126,11 @@ class MainActivity : AppCompatActivity(), OnTaskClickListener {
             R.id.sign_out_mi -> {
                 Firebase.auth.signOut()
                 finish()
+                true
+            }
+
+            R.id.history_mi -> {
+                tarl.launch(Intent(this, HistoryActivity::class.java))
                 true
             }
 
