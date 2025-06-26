@@ -38,6 +38,11 @@ class HistoryTaskAdapter(
                     onHistoryTaskClickListener.onReactivateTaskClick(adapterPosition)
                     true
                 }
+
+                menu.findItem(R.id.delete_mi).setOnMenuItemClickListener {
+                    onHistoryTaskClickListener.onDeleteTaskClick(adapterPosition)
+                    true
+                }
             }
         }
     }

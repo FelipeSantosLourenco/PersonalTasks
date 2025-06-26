@@ -108,6 +108,17 @@ class HistoryActivity : AppCompatActivity(), OnHistoryTaskClickListener {
             Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDeleteTaskClick(position: Int) {
+        val task = taskList[position]
+        taskList.removeAt(position)
+        historyController.deleteTask(task)
+        historyAdapter.notifyItemRemoved(position)
+
+        Toast.makeText(this,
+            "Task deletada!",
+            Toast.LENGTH_SHORT).show()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_history, menu)
         return true

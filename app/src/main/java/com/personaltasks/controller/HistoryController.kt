@@ -32,4 +32,10 @@ class HistoryController(private val historyActivity: HistoryActivity) {
             taskDao.updateTask(task)
         }
     }
+
+    fun deleteTask(task: Task){
+        databaseCoroutineScope.launch {
+            taskDao.deleteTask(task)
+        }
+    }
 }

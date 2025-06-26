@@ -8,4 +8,8 @@
         android:id="@+id/reactivate_task_mi"
         android:title="@string/restaurar" />
 
+    <item
+        android:id="@+id/delete_mi"
+        android:title="@string/deletar" />
+
 </menu>
