@@ -15,4 +15,5 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="resetar_senha">Resetar senha</string>
     <string name="sair">Sair</string>
+    <string name="restaurar">Restaurar</string>
 </resources>
