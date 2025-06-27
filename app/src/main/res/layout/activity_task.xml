@@ -54,8 +54,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Concluida"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/prioridade_sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data_limite_et"
+        />
+
+    <Spinner
+        android:id="@+id/prioridade_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/concluida_cb"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/data_limite_et"
         />
 

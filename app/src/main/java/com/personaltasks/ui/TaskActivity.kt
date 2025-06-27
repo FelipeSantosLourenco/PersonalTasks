@@ -9,7 +9,6 @@ import com.personaltasks.databinding.ActivityTaskBinding
 import com.personaltasks.model.Constant.EXTRA_TASK
 import com.personaltasks.model.Constant.EXTRA_VIEW_TASK
 import com.personaltasks.model.Task
-import java.time.LocalDate
 import java.util.Calendar
 
 class TaskActivity : AppCompatActivity() {
@@ -38,6 +37,7 @@ class TaskActivity : AppCompatActivity() {
                 tituloEt.setText(it.title)
                 descricaoEt.setText(it.description)
                 concluidaCb.isChecked = it.done
+                prioridadeSp.selectedItem
 
                 val cal = Calendar.getInstance().apply {
                     timeInMillis = it.date
@@ -56,6 +56,7 @@ class TaskActivity : AppCompatActivity() {
                     descricaoEt.isEnabled = false
                     dataLimiteEt.isEnabled = false
                     concluidaCb.isEnabled = false
+                    prioridadeSp.isEnabled = false
                     salvarBt.visibility = View.GONE
                 }
             }
@@ -76,7 +77,9 @@ class TaskActivity : AppCompatActivity() {
                     tituloEt.text.toString().trim(),
                     descricaoEt.text.toString().trim(),
                     date = dateMillis,
-                    concluidaCb.isChecked
+                    concluidaCb.isChecked,
+                    active = true,
+                    prioridadeSp.selectedItem.toString()
                 ).let { task ->
                     Intent().apply {
                         putExtra(EXTRA_TASK, task)

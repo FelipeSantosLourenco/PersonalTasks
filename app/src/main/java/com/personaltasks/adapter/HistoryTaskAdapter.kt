@@ -22,6 +22,7 @@ class HistoryTaskAdapter(
         val descriptionTv: TextView = ttb.descricaoTv
         val dateTv: TextView = ttb.dataLimiteTv
         val done: TextView = ttb.concluidaTv
+        val priority: TextView = ttb.prioridadeTv
 
         init {
             ttb.root.setOnClickListener { onHistoryTaskClickListener.onHistoryTaskClick(adapterPosition) }
@@ -64,6 +65,7 @@ class HistoryTaskAdapter(
                 titleTv.text = task.title
                 descriptionTv.text = task.description
                 dateTv.text = fmt.format(Date(task.date))
+                priority.text = task.priority
 
                 if (task.done) {
                     done.text = "Concluída"

@@ -19,7 +19,8 @@ data class Task(
     var description: String = "",
     var date: Long = 0L,
     var done: Boolean = false,
-    var active: Boolean = true
+    var active: Boolean = true,
+    var priority: String = ""
 ) : Parcelable {
     override fun toString(): String {
         val fmt = SimpleDateFormat("dd/MM/yyyy 'às' HH:mm", Locale.getDefault())

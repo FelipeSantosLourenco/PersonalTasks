@@ -22,8 +22,13 @@ class TaskAdapter(
         val descriptionTv: TextView = ttb.descricaoTv
         val dateTv: TextView = ttb.dataLimiteTv
         val done: TextView = ttb.concluidaTv
+        val priority: TextView = ttb.prioridadeTv
 
         init {
+            priority.append("alta")
+            priority.append("média")
+            priority.append("baixa")
+
             // cria o menu de contexto para cada célula associada a um novo holder
             ttb.root.setOnCreateContextMenuListener{ menu, v, menuInfo ->
                 (onTaskClickListener as AppCompatActivity).menuInflater.inflate(R.menu.context_menu_main, menu)
@@ -67,6 +72,7 @@ class TaskAdapter(
                 titleTv.text = task.title
                 descriptionTv.text = task.description
                 dateTv.text = fmt.format(Date(task.date))
+                priority.text = task.priority
 
                 if (task.done) {
                     done.text = "Concluída"
